@@ -1,6 +1,6 @@
 "use strict"
 
-const tweenSeoData = []
+const tweenSeoData = [];
 
 const generateTreeNodes = (data) => {
   return data.map(datum => {
@@ -16,15 +16,17 @@ const generateTreeNodes = (data) => {
             ${datum.date}
         </div>
       </li>
-    `
-  })
-}
+    `;
+  });
+};
 
-const generateResult = (treeNodes) => {
+const generateResult = (tree) => {
+  const stringNodes = tree.join("");
+
   return `
     <div>
       <ul class="BlogList">
-        ${treeNodes}
+        ${stringNodes}
       </ul>
     </div>
 
@@ -44,8 +46,8 @@ const generateResult = (treeNodes) => {
     <\/script>
 
     <script src="https://cdn.rawgit.com/slideseo-blog/slideseo.js/master/Part.js" type="text/javascript"><\/script>
-  `
-}
+  `;
+};
 
 const generateArbitaryHtml = (html) => {
   return html.replace(/[<>&\n]/g, (x) => {
@@ -55,50 +57,52 @@ const generateArbitaryHtml = (html) => {
           '&': '&amp;',
         '\n': '<br />'
       }[x];
-  })
-}
+  });
+};
 
 const preview = () => {
   const treeNodes = generateTreeNodes(tweenSeoData);
-  const result = generateResult(treeNodes)
+  const result = generateResult(treeNodes);
 
   const newWindow = window.open();
   newWindow.document.write(result);
-}
+};
 
 const generate = () => {
   const treeNodes = generateTreeNodes(tweenSeoData);
-  const result = generateResult(treeNodes)
+  const result = generateResult(treeNodes);
 
   const html = generateArbitaryHtml(result);
   const newWindow = window.open();
   newWindow.document.write(`<pre>${html}</pre>`);
-}
+};
 
 const addProperty = () => {
-  const title = document.getElementById('title').value
-  const url = document.getElementById('url').value
-  const date = document.getElementById('date').value
+  const title = document.getElementById('title').value;
+  const url = document.getElementById('url').value;
+  const date = document.getElementById('date').value;
 
   const newProperty = {
     title,
     url,
     date
-  }
+  };
 
-  tweenSeoData.push(newProperty)
-  displayData(title, url, date)
-}
+  tweenSeoData.push(newProperty);
+  displayData(title, url, date);
+};
 
 const displayData = (title, url, date) => {
-  const tableRef = document.getElementById('result').getElementsByTagName('tbody')[0]
-  const newRow = tableRef.insertRow(tableRef.rows.length)
+  const tableRef = document.getElementById('result').getElementsByTagName('tbody')[0];
+  const newRow = tableRef.insertRow(tableRef.rows.length);
 
-  const titleText  = document.createTextNode(title)
-  const urlText  = document.createTextNode(url)
-  const dateText  = document.createTextNode(date)
+  const titleText  = document.createTextNode(title);
+  const urlText  = document.createTextNode(url);
+  const dateText  = document.createTextNode(date);
 
-  const cellTitle  = newRow.insertCell(0).appendChild(titleText)
-  const cellUrl  = newRow.insertCell(1).appendChild(urlText)
-  const cellDate  = newRow.insertCell(2).appendChild(dateText)
-}
+  const cellTitle  = newRow.insertCell(0).appendChild(titleText);
+  const cellUrl  = newRow.insertCell(1).appendChild(urlText);
+  const cellDate  = newRow.insertCell(2).appendChild(dateText);
+};
+
+const arr = [1,2,3,4,[6,5,4]]

@@ -104,5 +104,3 @@ const displayData = (title, url, date) => {
   const cellUrl  = newRow.insertCell(1).appendChild(urlText);
   const cellDate  = newRow.insertCell(2).appendChild(dateText);
 };
-
-const arr = [1,2,3,4,[6,5,4]]

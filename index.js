@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const tweenSeoData = [];
 
@@ -6,9 +6,9 @@ const generateTreeNodes = (data) => {
   return data.map(datum => {
     return `
       <li class="ArticleTeaser">
-        <h3 class="ArticleTeaser-title">
+        <h4 class="ArticleTeaser-title">
           <a href="${datum.url}" target="_blank" title="${datum.title}">${datum.title}</a>
-        </h3>
+        </h4>
 
         <div class="ArticleTeaser-bubble"></div>
 

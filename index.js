@@ -1,6 +1,6 @@
 "use strict"
 
-const tweenSeoData = []
+let tweenSeoData = []
 
 const generateTreeNodes = (data) => {
   return data.map(datum => {
